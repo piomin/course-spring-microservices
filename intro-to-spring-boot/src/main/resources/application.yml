@@ -1,0 +1,8 @@
+spring.application.name: intro-to-spring-boot
+spring.output.ansi.enabled: ALWAYS
+
+management:
+  endpoints.web.exposure.include: '*'
+  endpoint:
+    health:
+      show-details: always

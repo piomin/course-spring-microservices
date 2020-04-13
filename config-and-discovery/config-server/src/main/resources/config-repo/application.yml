@@ -1,0 +1,3 @@
+server.port: 0
+property1: 'Generic property1'
+property2: 'Generic property2'

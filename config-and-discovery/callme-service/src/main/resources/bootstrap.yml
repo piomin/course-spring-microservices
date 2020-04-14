@@ -3,4 +3,22 @@ spring:
     name: callme-service
   cloud:
     config:
-      uri: http://localhost:8080
+      discovery:
+        enabled: true
+        serviceId: config-server
+#      uri: http://localhost:8080
+
+management:
+  endpoint:
+    shutdown:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+eureka:
+  instance:
+    leaseRenewalIntervalInSeconds: 1
+    leaseExpirationDurationInSeconds: 3
+    instanceId: ${spring.cloud.client.hostname}:${spring.application.name}:${spring.application.instance_id:${random.value}}}

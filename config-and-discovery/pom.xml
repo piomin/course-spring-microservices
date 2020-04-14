@@ -7,6 +7,7 @@
 		<module>config-server</module>
 		<module>callme-service</module>
 		<module>caller-service</module>
+		<module>discovery-server</module>
 	</modules>
 	<parent>
 		<groupId>org.springframework.boot</groupId>

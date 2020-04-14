@@ -2,9 +2,13 @@ spring:
   application:
     name: config-server
   profiles:
-    active: native
+    active: native #,vault #Enable for Vault backend
   cloud:
     config:
       server:
         native:
           searchLocations: classpath:/config-repo
+#        vault: #Enable for Vault backend
+#          host: 192.168.99.100
+#          authentication: TOKEN
+#          token: spring-microservices-course

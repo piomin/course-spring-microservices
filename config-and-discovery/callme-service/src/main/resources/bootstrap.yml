@@ -7,6 +7,13 @@ spring:
         enabled: true
         serviceId: config-server
 #      uri: http://localhost:8080
+    consul:
+      host: 192.168.99.100
+      config:
+        format: YAML
+      discovery:
+        registerHealthCheck: false
+        instanceId: "${spring.cloud.client.hostname}:${spring.application.name}:${random.value}"
 
 management:
   endpoint:

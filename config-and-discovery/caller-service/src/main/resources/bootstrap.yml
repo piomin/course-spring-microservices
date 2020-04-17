@@ -5,6 +5,13 @@ spring:
     config:
       uri: http://localhost:8080
 #       token: spring-microservices-course #Enable for Vault test
+    consul:
+      host: 192.168.99.100
+      config:
+        format: YAML
+      discovery:
+        registerHealthCheck: false
+        instanceId: "${spring.cloud.client.hostname}:${spring.application.name}:${random.value}"
 
 eureka:
   instance:

@@ -12,6 +12,7 @@
 	<modules>
 		<module>intro-to-spring-boot</module>
 		<module>config-and-discovery</module>
+		<module>inter-communication</module>
 	</modules>
 
 </project>

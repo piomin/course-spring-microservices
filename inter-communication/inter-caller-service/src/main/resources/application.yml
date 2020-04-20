@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: inter-caller-service
+  cloud:
+    loadbalancer:
+      cache:
+        ttl: 1s
+      ribbon:
+        enabled: false
+
+
+    circuitbreaker:
+      resilience4j:
+        enabled: true
+      hystrix:
+        enabled: false
+
+eureka:
+  client:
+    registryFetchIntervalSeconds: 1
+
+feign:
+  client:
+    config:
+      inter-callme-service:
+#        readTimeout: 100
+#        connectTimeout: 100
+        loggerLevel: full

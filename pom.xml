@@ -13,6 +13,7 @@
 		<module>intro-to-spring-boot</module>
 		<module>config-and-discovery</module>
 		<module>inter-communication</module>
+		<module>api-gateway</module>
 	</modules>
 
 </project>

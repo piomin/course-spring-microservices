@@ -26,3 +26,9 @@ feign:
 #        readTimeout: 100
 #        connectTimeout: 100
         loggerLevel: full
+
+management:
+  endpoints.web.exposure.include: '*'
+  endpoint:
+    health:
+      show-details: always

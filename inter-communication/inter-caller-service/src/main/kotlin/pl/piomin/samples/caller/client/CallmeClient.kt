@@ -23,4 +23,7 @@ interface CallmeClient {
     @PostMapping("/slow-call")
     fun slowCall(@RequestBody request: CallmeRequest) : CallmeResponse
 
+    @PostMapping("/random-call")
+    fun randomCall(@RequestBody request: CallmeRequest) : CallmeResponse
+
 }

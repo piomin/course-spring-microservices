@@ -24,6 +24,12 @@ class CallerControllerWithFeign(private val client: CallmeClient) {
         return client.slowCall(request)
     }
 
+    @PostMapping("/random-send/{message}")
+    fun randomSend(@PathVariable message: String): CallmeResponse? {
+        val request = CallmeRequest(++id, message)
+        return client.randomCall(request)
+    }
+
     @GetMapping("/conversations")
     fun findAllConversations(): MutableList<Conversation>? =
             client.findAllConversations()

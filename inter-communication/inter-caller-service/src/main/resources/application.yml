@@ -7,7 +7,9 @@ spring:
         ttl: 1s
       ribbon:
         enabled: false
-
+      instances:
+        - name: inter-callme-service
+          servers: localhost:59600, localhost:59800
 
     circuitbreaker:
       resilience4j:

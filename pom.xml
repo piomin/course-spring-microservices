@@ -14,6 +14,7 @@
 		<module>config-and-discovery</module>
 		<module>inter-communication</module>
 		<module>api-gateway</module>
+		<module>event-driven</module>
 	</modules>
 
 </project>

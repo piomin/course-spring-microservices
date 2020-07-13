@@ -22,3 +22,6 @@ Each directory in the root project is related with the single part of the course
 
 [Part 4 - API Gateway](https://www.youtube.com/watch?v=XIkSWHX38Tg)
 - api-gateway
+
+[Part 5 - Event-driven microservices](https://www.youtube.com/watch?v=fwhP9k0e1BY)
+- event-driven

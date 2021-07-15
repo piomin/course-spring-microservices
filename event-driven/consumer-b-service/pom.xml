@@ -11,10 +11,6 @@
 
     <artifactId>consumer-b-service</artifactId>
 
-    <properties>
-        <spring.cloud.stream.version>3.0.3</spring.cloud.stream.version>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
@@ -43,7 +39,6 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-stream</artifactId>
-            <version>3.0.3.RELEASE</version>
             <type>test-jar</type>
             <scope>test</scope>
             <classifier>test-binder</classifier>

@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
       - name: consumer-a
-        image: piomin/consumer-a
+        image: piomin/consumer-a-service
         env:
           - name: INSTANCE_INDEX
             value: "0"

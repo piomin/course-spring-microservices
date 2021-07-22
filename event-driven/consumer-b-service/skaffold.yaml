@@ -2,5 +2,5 @@ apiVersion: skaffold/v1
 kind: Config
 build:
   artifacts:
-  - image: piomin/consumer-a-service
+  - image: piomin/consumer-b-service
     jib: {}

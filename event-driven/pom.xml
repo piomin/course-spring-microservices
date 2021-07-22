@@ -25,6 +25,7 @@
         <module>producer-service</module>
         <module>consumer-a-service</module>
         <module>consumer-b-service</module>
+        <module>schema-registry-server</module>
     </modules>
 
     <dependencyManagement>

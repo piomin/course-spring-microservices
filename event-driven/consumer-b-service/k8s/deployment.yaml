@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: consumer-b
+spec:
+  type: ClusterIP
+  selector:
+    app: consumer-b
+  ports:
+  - port: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: consumer-b
+spec:
+  selector:
+    matchLabels:
+      app: consumer-b
+  template:
+    metadata:
+      labels:
+        app: consumer-b
+    spec:
+      containers:
+      - name: consumer-b
+        image: piomin/consumer-b
+        env:
+          - name: INSTANCE_INDEX
+            value: "1"
+        ports:
+        - containerPort: 8080

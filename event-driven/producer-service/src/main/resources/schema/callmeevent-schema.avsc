@@ -1,0 +1,17 @@
+{
+  "type":"record",
+  "name":"CallmeEvent",
+  "namespace":"pl.piomin.samples.eventdriven.producer.message.avro",
+  "fields": [
+    {
+      "name":"id",
+      "type":"int"
+    },{
+      "name":"message",
+      "type":"string"
+    },{
+      "name":"eventType",
+      "type": "string"
+    }
+  ]
+}

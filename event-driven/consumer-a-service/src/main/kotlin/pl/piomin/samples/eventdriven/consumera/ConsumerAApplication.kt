@@ -10,7 +10,7 @@ import pl.piomin.samples.eventdriven.consumera.message.CallmeEvent
 import java.util.function.Consumer
 
 @SpringBootApplication
-@EnableSchemaRegistryClient
+//@EnableSchemaRegistryClient
 class ConsumerAApplication {
 
     val logger: Logger = LoggerFactory.getLogger(ConsumerAApplication::class.java)

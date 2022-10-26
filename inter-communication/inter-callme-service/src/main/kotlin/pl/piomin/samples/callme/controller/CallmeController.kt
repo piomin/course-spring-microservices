@@ -21,6 +21,7 @@ class CallmeController(private val repository: ConversationRepository) {
 
     @PostMapping("/call")
     fun call(@RequestBody request: CallmeRequest) : CallmeResponse {
+        logger.info("In: {}", request)
         val response = CallmeResponse(request.id, request.message.reversed())
         repository.add(Conversation(request = request, response = response))
         return response

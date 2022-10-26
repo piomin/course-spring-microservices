@@ -1,6 +1,7 @@
 spring:
   application:
     name: inter-callme-service
+  output.ansi.enabled: ALWAYS
 
 server.port: 0
 
@@ -11,4 +12,11 @@ eureka:
     leaseExpirationDurationInSeconds: 3
     instanceId: ${spring.cloud.client.hostname}:${spring.application.name}:${spring.application.instance_id:${random.value}}
 
+logging.pattern.console: "%clr(%d{HH:mm:ss.SSS}){blue} %clr(%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]){yellow} %clr(:){red} %clr(%m){faint}%n"
+
 app.delay: 0
+
+management:
+  endpoints.web.exposure.include: '*'
+  metrics.distribution.percentiles-histogram.http.server.requests: true
+  tracing.sampling.probability: 1.0

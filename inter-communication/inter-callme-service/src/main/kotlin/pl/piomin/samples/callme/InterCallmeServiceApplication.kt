@@ -4,7 +4,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-open class CallmeServiceApplication
+class CallmeServiceApplication
 
 fun main(args: Array<String>) {
     runApplication<CallmeServiceApplication>(*args)

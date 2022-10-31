@@ -16,7 +16,7 @@ logging:
     console: "%clr(%d{HH:mm:ss.SSS}){blue} %clr(%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]){yellow} %clr(:){red} %clr(%m){faint}%n"
     file: "{\"timestamp\":\"%d{HH:mm:ss.SSS}\",\"level\":\"%p\",\"traceId\":\"%X{traceId:-}\",\"spanId\":\"%X{spanId:-}\",\"appName\":\"${spring.application.name}\",\"message\":\"%m\"}%n"
   file:
-    name: inter-callme-service-${server.port}.log
+    path: ${HOME}/inter-callme-service-${server.port}
 
 app.delay: 0
 

@@ -1,5 +1,7 @@
 package pl.piomin.samples.caller.controller
 
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 import org.springframework.web.bind.annotation.*
 import pl.piomin.samples.caller.client.CallmeClient
 import pl.piomin.samples.caller.model.CallmeRequest
@@ -10,10 +12,13 @@ import pl.piomin.samples.caller.model.Conversation
 @RequestMapping("/caller-with-feign")
 class CallerControllerWithFeign(private val client: CallmeClient) {
 
+    private val logger: Logger = LoggerFactory.getLogger(CallerControllerWithFeign::class.java)
+
     private var id: Int = 0
 
     @PostMapping("/send/{message}")
     fun send(@PathVariable message: String): CallmeResponse? {
+        logger.info("In: {}", message)
         val request = CallmeRequest(++id, message)
         return client.call(request)
     }

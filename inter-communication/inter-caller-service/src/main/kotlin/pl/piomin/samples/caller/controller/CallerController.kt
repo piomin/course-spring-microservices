@@ -1,5 +1,7 @@
 package pl.piomin.samples.caller.controller
 
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 import org.springframework.cloud.circuitbreaker.resilience4j.Resilience4JCircuitBreakerFactory
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.client.RestTemplate
@@ -11,10 +13,13 @@ import pl.piomin.samples.caller.model.Conversation
 @RequestMapping("/caller")
 class CallerController(private val template: RestTemplate, private val factory: Resilience4JCircuitBreakerFactory) {
 
+    private val logger: Logger = LoggerFactory.getLogger(CallerController::class.java)
+
     private var id: Int = 0
 
     @PostMapping("/send/{message}")
     fun send(@PathVariable message: String): CallmeResponse? {
+        logger.info("In: {}", message)
         val request = CallmeRequest(++id, message)
         return template.postForObject("http://inter-callme-service/callme/call",
                 request, CallmeResponse::class.java)

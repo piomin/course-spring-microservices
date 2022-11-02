@@ -18,8 +18,6 @@ import org.springframework.http.client.reactive.ReactorClientHttpConnector
 import org.springframework.web.client.RestTemplate
 import org.springframework.web.reactive.function.client.WebClient
 import pl.piomin.samples.caller.client.CustomCallmeClientLoadBalancerConfiguration
-import pl.piomin.samples.caller.client.ResponseTimeHistory
-import pl.piomin.samples.caller.client.ResponseTimeInterceptor
 import reactor.netty.http.client.HttpClient
 import reactor.netty.tcp.TcpClient
 import java.time.Duration
@@ -28,7 +26,7 @@ import java.util.concurrent.TimeUnit
 
 @SpringBootApplication
 @EnableFeignClients
-//@LoadBalancerClient(value = "inter-callme-service", configuration = [CustomCallmeClientLoadBalancerConfiguration::class])
+@LoadBalancerClient(value = "inter-callme-service", configuration = [CustomCallmeClientLoadBalancerConfiguration::class])
 class InterCallerServiceApplication {
 
 //    @Bean
@@ -39,7 +37,7 @@ class InterCallerServiceApplication {
 
     @Bean
     @LoadBalanced
-    fun template(): RestTemplate = RestTemplateBuilder()
+    fun template(builder: RestTemplateBuilder): RestTemplate = builder
 //            .interceptors(responseTimeInterceptor())
 //            .setReadTimeout(Duration.ofMillis(100))
 //            .setConnectTimeout(Duration.ofMillis(100))

@@ -5,10 +5,10 @@ import org.slf4j.LoggerFactory
 import org.slf4j.MDC
 import org.springframework.beans.factory.ObjectProvider
 import org.springframework.cloud.client.ServiceInstance
-import org.springframework.cloud.client.loadbalancer.reactive.DefaultResponse
-import org.springframework.cloud.client.loadbalancer.reactive.EmptyResponse
-import org.springframework.cloud.client.loadbalancer.reactive.Request
-import org.springframework.cloud.client.loadbalancer.reactive.Response
+import org.springframework.cloud.client.loadbalancer.DefaultResponse
+import org.springframework.cloud.client.loadbalancer.EmptyResponse
+import org.springframework.cloud.client.loadbalancer.Request
+import org.springframework.cloud.client.loadbalancer.Response
 import org.springframework.cloud.loadbalancer.core.NoopServiceInstanceListSupplier
 import org.springframework.cloud.loadbalancer.core.ReactorServiceInstanceLoadBalancer
 import org.springframework.cloud.loadbalancer.core.ServiceInstanceListSupplier

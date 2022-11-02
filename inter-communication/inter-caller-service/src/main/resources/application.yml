@@ -9,13 +9,15 @@ spring:
         enabled: false
       instances:
         - name: inter-callme-service
-          servers: localhost:59600, localhost:59800
+          servers: localhost:55800, localhost:55900
 
     circuitbreaker:
       resilience4j:
         enabled: true
       hystrix:
         enabled: false
+
+  output.ansi.enabled: ALWAYS
 
 eureka:
   client:
@@ -31,6 +33,15 @@ feign:
 
 management:
   endpoints.web.exposure.include: '*'
+  metrics.distribution.percentiles-histogram.http.server.requests: true
+  tracing.sampling.probability: 1.0
   endpoint:
     health:
       show-details: always
+
+logging:
+  pattern:
+    console: "%clr(%d{HH:mm:ss.SSS}){blue} %clr(%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]){yellow} %clr(:){red} %clr(%m){faint}%n"
+    file: "{\"timestamp\":\"%d{HH:mm:ss.SSS}\",\"level\":\"%p\",\"traceId\":\"%X{traceId:-}\",\"spanId\":\"%X{spanId:-}\",\"appName\":\"${spring.application.name}\",\"message\":\"%m\"}%n"
+  file:
+    path: ${HOME}/inter-caller-service

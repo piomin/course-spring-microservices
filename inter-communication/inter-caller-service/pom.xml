@@ -11,6 +11,10 @@
 
 	<artifactId>inter-caller-service</artifactId>
 
+	<properties>
+		<sonar.moduleKey>${project.artifactId}</sonar.moduleKey>
+	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -76,6 +80,12 @@
 					<artifactId>junit-vintage-engine</artifactId>
 				</exclusion>
 			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>io.specto</groupId>
+			<artifactId>hoverfly-java-junit5</artifactId>
+			<version>0.14.4</version>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 

@@ -17,6 +17,7 @@
 	<properties>
 		<java.version>11</java.version>
 		<kotlin.version>1.3.71</kotlin.version>
+		<sonar.moduleKey>${project.artifactId}</sonar.moduleKey>
 	</properties>
 
 	<dependencies>

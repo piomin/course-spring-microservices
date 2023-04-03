@@ -11,6 +11,10 @@
 
 	<artifactId>caller-service</artifactId>
 
+	<properties>
+		<sonar.moduleKey>${project.artifactId}</sonar.moduleKey>
+	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

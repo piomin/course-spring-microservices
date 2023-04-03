@@ -1,7 +1,17 @@
 version: 2.1
 
+jobs:
+  analyze:
+    docker:
+      - image: 'cimg/openjdk:19.0'
+    steps:
+      - checkout
+      - run:
+          name: Analyze on SonarCloud
+          command: mvn verify sonar:sonar
+
 executors:
-  j11:
+  jdk:
     docker:
       - image: 'cimg/openjdk:11.0'
 
@@ -12,4 +22,6 @@ workflows:
   maven_test:
     jobs:
       - maven/test:
-          executor: j11
+          executor: jdk
+      - analyze:
+          context: SonarCloud

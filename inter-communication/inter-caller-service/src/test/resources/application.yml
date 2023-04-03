@@ -1,0 +1,47 @@
+spring:
+  application:
+    name: inter-caller-service
+  cloud:
+    loadbalancer:
+      cache:
+        ttl: 1s
+      ribbon:
+        enabled: false
+      instances:
+        - name: inter-callme-service
+          servers: localhost:55800
+
+    circuitbreaker:
+      resilience4j:
+        enabled: true
+      hystrix:
+        enabled: false
+
+  output.ansi.enabled: ALWAYS
+
+eureka:
+  client:
+    registryFetchIntervalSeconds: 1
+
+feign:
+  client:
+    config:
+      inter-callme-service:
+#        readTimeout: 100
+#        connectTimeout: 100
+        loggerLevel: full
+
+management:
+  endpoints.web.exposure.include: '*'
+  metrics.distribution.percentiles-histogram.http.server.requests: true
+  tracing.sampling.probability: 1.0
+  endpoint:
+    health:
+      show-details: always
+
+logging:
+  pattern:
+    console: "%clr(%d{HH:mm:ss.SSS}){blue} %clr(%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]){yellow} %clr(:){red} %clr(%m){faint}%n"
+    file: "{\"timestamp\":\"%d{HH:mm:ss.SSS}\",\"level\":\"%p\",\"traceId\":\"%X{traceId:-}\",\"spanId\":\"%X{spanId:-}\",\"appName\":\"${spring.application.name}\",\"message\":\"%m\"}%n"
+  file:
+    path: ${HOME}/inter-caller-service

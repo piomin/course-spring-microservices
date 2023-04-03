@@ -3,18 +3,15 @@
 		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<modules>
-		<module>config-server</module>
-		<module>callme-service</module>
-		<module>caller-service</module>
-		<module>discovery-server</module>
-	</modules>
+
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.2.6.RELEASE</version>
-		<relativePath/>
+		<relativePath />
 	</parent>
+
+	<groupId>pl.piomin.samples</groupId>
 	<artifactId>config-and-discovery</artifactId>
 	<version>1.0</version>
 	<packaging>pom</packaging>
@@ -25,6 +22,13 @@
 		<spring-cloud.version>Hoxton.SR3</spring-cloud.version>
 		<sonar.moduleKey>${project.artifactId}</sonar.moduleKey>
 	</properties>
+
+	<modules>
+		<module>config-server</module>
+		<module>callme-service</module>
+		<module>caller-service</module>
+		<module>discovery-server</module>
+	</modules>
 
 	<dependencyManagement>
 		<dependencies>

@@ -2,21 +2,18 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
 		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>3.0.5</version>
 		<relativePath/>
 	</parent>
-	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>pl.piomin.samples</groupId>
 	<artifactId>inter-communication</artifactId>
 	<version>1.1</version>
-	<modules>
-		<module>inter-callme-service</module>
-		<module>inter-caller-service</module>
-	</modules>
 	<packaging>pom</packaging>
 
 	<properties>
@@ -25,6 +22,11 @@
 		<spring-cloud.version>2022.0.2</spring-cloud.version>
 		<sonar.moduleKey>${project.artifactId}</sonar.moduleKey>
 	</properties>
+
+	<modules>
+		<module>inter-callme-service</module>
+		<module>inter-caller-service</module>
+	</modules>
 
 	<dependencyManagement>
 		<dependencies>
@@ -38,27 +40,4 @@
 		</dependencies>
 	</dependencyManagement>
 
-<!--	<repositories>-->
-<!--		<repository>-->
-<!--			<id>repository.spring.release</id>-->
-<!--			<name>Spring GA Repository</name>-->
-<!--			<url>http://repo.spring.io/milestone</url>-->
-<!--		</repository>-->
-<!--		<repository>-->
-<!--			<id>repository.spring.plugins.release</id>-->
-<!--			<url>https://repo.spring.io/plugins-release/</url>-->
-<!--		</repository>-->
-<!--	</repositories>-->
-
-<!--	<pluginRepositories>-->
-<!--		<pluginRepository>-->
-<!--			<id>repository.spring.release</id>-->
-<!--			<name>Spring GA Repository</name>-->
-<!--			<url>http://repo.spring.io/milestone</url>-->
-<!--		</pluginRepository>-->
-<!--		<pluginRepository>-->
-<!--			<id>repository.spring.plugins.release</id>-->
-<!--			<url>https://repo.spring.io/plugins-release/</url>-->
-<!--		</pluginRepository>-->
-<!--	</pluginRepositories>-->
 </project>

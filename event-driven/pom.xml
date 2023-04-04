@@ -18,7 +18,7 @@
     <properties>
         <java.version>11</java.version>
         <kotlin.version>1.5.20</kotlin.version>
-        <spring-cloud.version>2020.0.3</spring-cloud.version>
+        <spring-cloud.version>2020.0.6</spring-cloud.version>
         <sonar.moduleKey>${project.artifactId}</sonar.moduleKey>
     </properties>
 

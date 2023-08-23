@@ -18,7 +18,7 @@
 
     <properties>
         <java.version>19</java.version>
-        <kotlin.version>1.9.0</kotlin.version>
+        <kotlin.version>1.9.10</kotlin.version>
         <spring-cloud.version>2022.0.4</spring-cloud.version>
         <sonar.projectKey>piomin_course-spring-microservices</sonar.projectKey>
         <sonar.organization>piomin</sonar.organization>

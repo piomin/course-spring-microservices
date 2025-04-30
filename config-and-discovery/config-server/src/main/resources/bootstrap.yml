@@ -1,14 +1,15 @@
+
 spring:
   application:
     name: config-server
   profiles:
-    active: native #,vault #Enable for Vault backend
+    active: ${CONFIG_BACKEND:native} # Set to 'vault' to enable Vault backend
   cloud:
     config:
       server:
         native:
-          searchLocations: classpath:/config-repo
-#        vault: #Enable for Vault backend
-#          host: 192.168.99.100
-#          authentication: TOKEN
-#          token: spring-microservices-course
+          searchLocations: ${CONFIG_SEARCH_LOCATIONS:classpath:/config-repo}
+        vault:
+          host: ${VAULT_HOST:192.168.99.100}
+          authentication: ${VAULT_AUTHENTICATION:TOKEN}
+          token: ${VAULT_TOKEN:spring-microservices-course}

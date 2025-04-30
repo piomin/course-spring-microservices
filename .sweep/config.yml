@@ -1,0 +1,4 @@
+repo:
+  name: piomin/course-spring-microservices
+  root: /
+branch: sweep

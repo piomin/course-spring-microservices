@@ -2,7 +2,7 @@ spring:
   application:
     name: api-gateway
   cloud:
-    gateway:
+    gateway.server.webflux.:
       discovery:
         locator:
           enabled: true
@@ -32,11 +32,9 @@ spring:
               args:
                 redis-rate-limiter.replenishRate: 20
                 redis-rate-limiter.burstCapacity: 40
-    loadbalancer:
-      ribbon:
-        enabled: false
-  redis:
-    host: 192.168.99.100
+#    loadbalancer:
+#      ribbon:
+#        enabled: false
 
 management:
   endpoints.web.exposure.include: '*'

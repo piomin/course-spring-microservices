@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+
+  redis:
+    image: redis:7.2-alpine
+    container_name: redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    networks:
+      - microservices-network
+
+  discovery:
+    image: piomin/discovery-service:2.0
+    container_name: discovery
+    ports:
+      - "8761:8761"
+    networks:
+      - microservices-network
+
+volumes:
+  redis-data:
+
+networks:
+  microservices-network:
+    driver: bridge

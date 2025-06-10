@@ -1,5 +1,3 @@
-
-  
 spring:
   application:
     name: callme-service
@@ -11,7 +9,6 @@ spring:
       failFast: true
       uri: http://localhost:8080
     consul:
-      host: 192.168.99.100
       config:
         format: YAML
       discovery:

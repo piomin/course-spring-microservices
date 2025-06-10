@@ -109,4 +109,16 @@
         </plugins>
     </build>
 
+    <profiles>
+        <profile>
+            <id>compose</id>
+            <dependencies>
+                <dependency>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-docker-compose</artifactId>
+                </dependency>
+            </dependencies>
+        </profile>
+    </profiles>
+
 </project>

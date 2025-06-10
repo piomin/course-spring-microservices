@@ -15,29 +15,33 @@ import java.time.Duration
 @SpringBootApplication
 class ApiGatewayApplication {
 
-	@Bean
-	fun keyResolver(): KeyResolver = KeyResolver { _ -> Mono.just("1") }
+    @Bean
+    fun keyResolver(): KeyResolver = KeyResolver { _ -> Mono.just("1") }
 
-	@Bean
-	fun defaultCustomizer(): Customizer<ReactiveResilience4JCircuitBreakerFactory> {
-		return Customizer { factory: ReactiveResilience4JCircuitBreakerFactory ->
-			factory.configureDefault { id: String? ->
-				Resilience4JConfigBuilder(id)
-						.timeLimiterConfig(TimeLimiterConfig.custom()
-								.timeoutDuration(Duration.ofMillis(500))
-								.build())
-						.circuitBreakerConfig(CircuitBreakerConfig.custom()
-								.slidingWindowSize(10)
-								.failureRateThreshold(33.3F)
-								.slowCallRateThreshold(33.3F)
-								.build())
-						.build()
-			}
-		}
-	}
+    @Bean
+    fun defaultCustomizer(): Customizer<ReactiveResilience4JCircuitBreakerFactory> {
+        return Customizer { factory: ReactiveResilience4JCircuitBreakerFactory ->
+            factory.configureDefault { id: String? ->
+                Resilience4JConfigBuilder(id)
+                    .timeLimiterConfig(
+                        TimeLimiterConfig.custom()
+                            .timeoutDuration(Duration.ofMillis(500))
+                            .build()
+                    )
+                    .circuitBreakerConfig(
+                        CircuitBreakerConfig.custom()
+                            .slidingWindowSize(10)
+                            .failureRateThreshold(33.3F)
+                            .slowCallRateThreshold(33.3F)
+                            .build()
+                    )
+                    .build()
+            }
+        }
+    }
 
 }
 
 fun main(args: Array<String>) {
-	runApplication<ApiGatewayApplication>(*args)
+    runApplication<ApiGatewayApplication>(*args)
 }

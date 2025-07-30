@@ -17,7 +17,7 @@ services:
       - logging-network
 
   logstash:
-    image: docker.elastic.co/logstash/logstash:9.0.4
+    image: docker.elastic.co/logstash/logstash:9.1.0
     container_name: logstash
     ports:
       - "5000:5000"

@@ -31,7 +31,7 @@ services:
       - logging-network
 
   kibana:
-    image: docker.elastic.co/kibana/kibana:9.2.3
+    image: docker.elastic.co/kibana/kibana:9.2.4
     container_name: kibana
     ports:
       - "5601:5601"

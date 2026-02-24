@@ -48,5 +48,5 @@ class CallerController(private val template: RestTemplate, private val factory: 
     @GetMapping("/conversations/{requestId}")
     fun findByRequestId(@PathVariable requestId: Int): Conversation? =
             template.getForObject("http://inter-callme-service/callme/conversations/{requestId}",
-                    Conversation::class.java, requestId)
+                                 Conversation::class.java, requestId)
 }

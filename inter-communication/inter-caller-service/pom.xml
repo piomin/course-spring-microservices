@@ -76,9 +76,9 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>io.specto</groupId>
-            <artifactId>hoverfly-java-junit5</artifactId>
-            <version>0.20.2</version>
+            <groupId>org.mockito.kotlin</groupId>
+            <artifactId>mockito-kotlin</artifactId>
+            <version>5.4.0</version>
             <scope>test</scope>
         </dependency>
     </dependencies>

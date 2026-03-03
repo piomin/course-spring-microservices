@@ -7,12 +7,13 @@ import org.springframework.context.annotation.Bean
 import org.springframework.messaging.Message
 import org.springframework.messaging.support.MessageBuilder
 import pl.piomin.samples.eventdriven.producer.message.CallmeEvent
+import java.util.concurrent.atomic.AtomicInteger
 import java.util.function.Supplier
 
 @SpringBootApplication
 class ProductionApplication {
 
-    var id: Int = 0
+    private val id = AtomicInteger()
 
     @Value("\${callme.supplier.enabled}")
     val supplierEnabled: Boolean = false
@@ -22,7 +23,7 @@ class ProductionApplication {
 
     private fun createEvent(): Message<CallmeEvent>? {
         return if (supplierEnabled)
-             MessageBuilder.withPayload(CallmeEvent(++id, "I'm callme event!"))
+             MessageBuilder.withPayload(CallmeEvent(id.incrementAndGet(), "I'm callme event!"))
                      .setHeader("to_process", true)
                      .build()
         else

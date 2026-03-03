@@ -7,6 +7,7 @@ import pl.piomin.samples.caller.client.CallmeClient
 import pl.piomin.samples.caller.model.CallmeRequest
 import pl.piomin.samples.caller.model.CallmeResponse
 import pl.piomin.samples.caller.model.Conversation
+import java.util.concurrent.atomic.AtomicInteger
 
 @RestController
 @RequestMapping("/caller-with-feign")
@@ -14,24 +15,24 @@ class CallerControllerWithFeign(private val client: CallmeClient) {
 
     private val logger: Logger = LoggerFactory.getLogger(CallerControllerWithFeign::class.java)
 
-    private var id: Int = 0
+    private val id = AtomicInteger()
 
     @PostMapping("/send/{message}")
     fun send(@PathVariable message: String): CallmeResponse? {
         logger.info("In: {}", message)
-        val request = CallmeRequest(++id, message)
+        val request = CallmeRequest(id.incrementAndGet(), message)
         return client.call(request)
     }
 
     @PostMapping("/slow-send/{message}")
     fun slowSend(@PathVariable message: String): CallmeResponse? {
-        val request = CallmeRequest(++id, message)
+        val request = CallmeRequest(id.incrementAndGet(), message)
         return client.slowCall(request)
     }
 
     @PostMapping("/random-send/{message}")
     fun randomSend(@PathVariable message: String): CallmeResponse? {
-        val request = CallmeRequest(++id, message)
+        val request = CallmeRequest(id.incrementAndGet(), message)
         return client.randomCall(request)
     }
 

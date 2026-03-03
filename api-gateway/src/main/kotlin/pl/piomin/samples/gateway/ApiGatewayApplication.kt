@@ -21,7 +21,7 @@ class ApiGatewayApplication {
     @Bean
     fun defaultCustomizer(): Customizer<ReactiveResilience4JCircuitBreakerFactory> {
         return Customizer { factory: ReactiveResilience4JCircuitBreakerFactory ->
-            factory.configureDefault { id: String? ->
+            factory.configureDefault { id: String ->
                 Resilience4JConfigBuilder(id)
                     .timeLimiterConfig(
                         TimeLimiterConfig.custom()

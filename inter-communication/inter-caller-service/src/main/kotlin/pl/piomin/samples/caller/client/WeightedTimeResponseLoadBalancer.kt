@@ -23,7 +23,7 @@ class WeightedTimeResponseLoadBalancer(
     private val logger: Logger = LoggerFactory.getLogger(WeightedTimeResponseLoadBalancer::class.java)
     private val position: AtomicInteger = AtomicInteger()
 
-    override fun choose(request: Request<*>?): Mono<Response<ServiceInstance>> {
+    override fun choose(request: Request<Any>): Mono<Response<ServiceInstance>> {
         val supplier: ServiceInstanceListSupplier = serviceInstanceListSupplierProvider
                 .getIfAvailable { NoopServiceInstanceListSupplier() }
         return supplier.get().next()

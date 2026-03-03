@@ -1,6 +1,7 @@
 spring:
   application:
     name: inter-callme-service
+  threads.virtual.enabled: true
   output.ansi.enabled: ALWAYS
 
 server.port: 0

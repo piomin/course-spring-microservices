@@ -1,7 +1,7 @@
 services:
 
   elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:9.3.0
+    image: docker.elastic.co/elasticsearch/elasticsearch:9.3.1
     container_name: elasticsearch
     environment:
       - discovery.type=single-node
@@ -15,7 +15,7 @@ services:
       - logging-network
 
   logstash:
-    image: docker.elastic.co/logstash/logstash:9.3.0
+    image: docker.elastic.co/logstash/logstash:9.3.1
     container_name: logstash
     ports:
       - "5000:5000"
@@ -29,7 +29,7 @@ services:
       - logging-network
 
   kibana:
-    image: docker.elastic.co/kibana/kibana:9.3.0
+    image: docker.elastic.co/kibana/kibana:9.3.1
     container_name: kibana
     ports:
       - "5601:5601"

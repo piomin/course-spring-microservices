@@ -1,3 +1,3 @@
 package pl.piomin.samples.caller.model
 
-data class CallmeResponse(var id: Int = 0, val message: String = "")
+data class CallmeResponse(val id: Int, val message: String)

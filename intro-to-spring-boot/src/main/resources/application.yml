@@ -1,5 +1,6 @@
 spring.application.name: intro-to-spring-boot
 spring.output.ansi.enabled: ALWAYS
+spring.threads.virtual.enabled: true
 
 management:
   endpoints.web.exposure.include: '*'

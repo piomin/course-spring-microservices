@@ -17,6 +17,7 @@ spring:
       hystrix:
         enabled: false
 
+  threads.virtual.enabled: true
   output.ansi.enabled: ALWAYS
 
 eureka:

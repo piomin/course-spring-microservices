@@ -32,7 +32,7 @@ class CustomCallmeClientLoadBalancerConfiguration {
         val delegate = StaticServiceInstanceListSupplier(properties, environment)
         val cacheManagerProvider = context.getBeanProvider(LoadBalancerCacheManager::class.java)
         return if (cacheManagerProvider.ifAvailable != null) {
-            CachingServiceInstanceListSupplier(delegate, cacheManagerProvider.ifAvailable)
+            CachingServiceInstanceListSupplier(delegate, cacheManagerProvider.ifAvailable!!)
         } else delegate
     }
 

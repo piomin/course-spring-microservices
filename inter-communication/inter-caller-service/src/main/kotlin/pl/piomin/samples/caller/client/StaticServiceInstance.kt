@@ -10,13 +10,11 @@ class StaticServiceInstance(private val serviceName: String,
 
     override fun getMetadata(): MutableMap<String, String> = mutableMapOf()
 
-    override fun getPort(): Int = address.split(":", ignoreCase = false, limit = 2).last().toInt()
+    override fun getPort(): Int = address.split(":", ignoreCase = false, limit = 2).last().trim().toInt()
 
     override fun getHost(): String = address.split(":", ignoreCase = false, limit = 2).first().trim()
 
-    override fun getUri(): URI {
-        TODO("not implemented")
-    }
+    override fun getUri(): URI = URI.create("http://${host}:${port}")
 
     override fun isSecure(): Boolean = false
 }

@@ -7,16 +7,17 @@ import pl.piomin.samples.caller.model.CallmeResponse
 import pl.piomin.samples.caller.model.Conversation
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
+import java.util.concurrent.atomic.AtomicInteger
 
 @RestController
 @RequestMapping("/reactivecaller")
 class ReactiveCallerController(private val clientBuilder: WebClient.Builder) {
 
-    private var id: Int = 0
+    private val id = AtomicInteger()
 
     @PostMapping("/send/{message}")
     fun send(@PathVariable message: String): Mono<CallmeResponse> {
-        val request = CallmeRequest(++id, message)
+        val request = CallmeRequest(id.incrementAndGet(), message)
         return clientBuilder.build().post().uri("http://inter-callme-service/callme/call")
                 .bodyValue(request)
                 .retrieve()
@@ -25,7 +26,7 @@ class ReactiveCallerController(private val clientBuilder: WebClient.Builder) {
 
     @PostMapping("/slow-send/{message}")
     fun slowSend(@PathVariable message: String): Mono<CallmeResponse> {
-        val request = CallmeRequest(++id, message)
+        val request = CallmeRequest(id.incrementAndGet(), message)
         return clientBuilder.build().post().uri("http://inter-callme-service/callme/slow-call")
                 .bodyValue(request)
                 .retrieve()

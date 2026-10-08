@@ -49,7 +49,7 @@ class CallmeController(private val repository: ConversationRepository) {
     }
 
     @GetMapping("/conversations")
-    fun findAllConversations(): MutableList<Conversation> = repository.findAll()
+    fun findAllConversations(): List<Conversation> = repository.findAll()
 
     @GetMapping("/conversations/{requestId}")
     fun findConversationByRequestId(requestId: Int): Conversation? = repository.findByRequestId(requestId)

@@ -1,6 +1,9 @@
 spring:
   application:
     name: discovery-server
+  threads:
+    virtual:
+      enabled: true
 
 server.port: 8761
 

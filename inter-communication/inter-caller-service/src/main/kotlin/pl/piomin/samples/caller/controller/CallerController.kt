@@ -8,6 +8,7 @@ import org.springframework.web.client.RestTemplate
 import pl.piomin.samples.caller.model.CallmeRequest
 import pl.piomin.samples.caller.model.CallmeResponse
 import pl.piomin.samples.caller.model.Conversation
+import java.util.concurrent.atomic.AtomicInteger
 
 @RestController
 @RequestMapping("/caller")
@@ -15,19 +16,19 @@ class CallerController(private val template: RestTemplate, private val factory: 
 
     private val logger: Logger = LoggerFactory.getLogger(CallerController::class.java)
 
-    private var id: Int = 0
+    private val id = AtomicInteger()
 
     @PostMapping("/send/{message}")
     fun send(@PathVariable message: String): CallmeResponse? {
         logger.info("In: {}", message)
-        val request = CallmeRequest(++id, message)
+        val request = CallmeRequest(id.incrementAndGet(), message)
         return template.postForObject("http://inter-callme-service/callme/call",
                 request, CallmeResponse::class.java)
     }
 
     @PostMapping("/random-send/{message}")
     fun randomSend(@PathVariable message: String): CallmeResponse? {
-        val request = CallmeRequest(++id, message)
+        val request = CallmeRequest(id.incrementAndGet(), message)
         val circuit = factory.create("random-circuit")
         return circuit.run { template.postForObject("http://inter-callme-service/callme/random-call",
                 request, CallmeResponse::class.java) }
@@ -35,7 +36,7 @@ class CallerController(private val template: RestTemplate, private val factory: 
 
     @PostMapping("/slow-send/{message}")
     fun slowSend(@PathVariable message: String): CallmeResponse? {
-        val request = CallmeRequest(++id, message)
+        val request = CallmeRequest(id.incrementAndGet(), message)
         return template.postForObject("http://inter-callme-service/callme/slow-call",
                 request, CallmeResponse::class.java)
     }
